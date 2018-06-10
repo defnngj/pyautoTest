@@ -7,6 +7,7 @@ import os
 driver = None
 
 
+
 @pytest.mark.hookwrapper
 def pytest_runtest_makereport(item):
     """
@@ -27,6 +28,7 @@ def pytest_runtest_makereport(item):
                 file_name = file_name_
             _capture_screenshot(file_name)
             file_name = file_name.replace('test_case/', 'image/')
+            # image/test_baidu_search.py_test_baidu_search1.png
             if file_name:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
                             'onclick="window.open(this.src)" align="right"/></div>' % file_name

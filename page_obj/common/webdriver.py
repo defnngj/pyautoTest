@@ -19,7 +19,7 @@ class WebDriver(object):
         self.base_url = base_url
         self.timeout = timeout
 
-    def _open(self):
+    def _open(self, url):
         '''
         open the two level path of the bbs
         Usage:
@@ -298,6 +298,14 @@ class WebDriver(object):
         driver.accept_alert()
         '''
         self.driver.switch_to.alert.accept()
+
+    def get_alert_text(self):
+        '''
+        get alert text.
+        Usage:
+        driver.get_alert_text()
+        '''
+        return self.driver.switch_to.alert.text
 
     def dismiss_alert(self):
         '''

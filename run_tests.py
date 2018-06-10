@@ -16,15 +16,16 @@ import click
 > python run_tests.py  -mode debug  # debug模式, 不生成报告
 '''
 
+
 @click.command()
 @click.option('-mode', default="run", help="输入运行模式：run 或 debug")
 def run(mode):
     if mode == "run":
         now_time = time.strftime("%Y-%m-%d_%H_%M_%S")
         pytest.main(["-s", "./test_case/",
-                     "--html=./test_report/" + now_time + "report.html",
+                     "--html", "./test_report/" + now_time + "report.html",
                      "--self-contained-html",
-                     "--reruns", "0"])
+                     "--reruns", "3"])
     elif mode == "debug":
         print("debug模式运行测试用例：")
         pytest.main(["-v", "-s", "./test_case/"])

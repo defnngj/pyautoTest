@@ -33,4 +33,8 @@ class BaiduPage(WebDriver):
     # 保存设置
     def save_seting(self):
         self.click(".prefpanelgo")
-        self.accept_alert()
+
+    def get_alert(self):
+        text = self.get_alert_text()
+        self.accept_alert()   # 接受警告框
+        return text

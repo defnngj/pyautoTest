@@ -23,6 +23,7 @@ def test_baidu_search1(browser):
     "name, searchkey",
     [("1", "Selenium"),
      ("2", "pytest文档"),
+     ("3", "pytest-html"),
      ])
 def test_baidu_search(name, searchkey, browser):
     bd = BaiduPage(browser)
