@@ -24,7 +24,9 @@ def test_baidu_search1(browser):
     [("1", "Selenium"),
      ("2", "pytest文档"),
      ("3", "pytest-html"),
-     ])
+     ],
+     ids=["case1", "case2", "case3"]
+    )
 def test_baidu_search(name, searchkey, browser):
     bd = BaiduPage(browser)
     bd.open()
