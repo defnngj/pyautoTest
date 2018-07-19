@@ -1,5 +1,5 @@
-selenium==3.11.0
-pytest==3.4.2
-pytest-html==1.16.1
-pytest-rerunfailures==4.0
+selenium==3.13.0
+pytest==3.6.0
+pytest-html==1.19
+pytest-rerunfailures==4.1
 click==6.7
