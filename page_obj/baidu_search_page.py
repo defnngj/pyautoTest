@@ -3,10 +3,10 @@ from .common import WebDriver
 from time import sleep
 
 
-class BaiduPage(WebDriver):
-    '''
+class BaiduSearchPage(WebDriver):
+    """
     百度首页
-    '''
+    """
     url = '/'
 
     # 百度输入框
@@ -23,7 +23,7 @@ class BaiduPage(WebDriver):
         return self.get_title()
 
     # 设置
-    def setings(self):
+    def settings(self):
         self.click("link_text=>设置")
 
     # 搜索设置
@@ -31,7 +31,7 @@ class BaiduPage(WebDriver):
         self.click(".setpref")
 
     # 保存设置
-    def save_seting(self):
+    def save_setting(self):
         self.click(".prefpanelgo")
 
     def get_alert(self):
