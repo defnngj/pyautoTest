@@ -1,13 +1,12 @@
 # coding=utf-8
 from .common import WebDriver
-from time import sleep
 
 
 class BaiduSearchPage(WebDriver):
     """
     百度首页
     """
-    url = '/'
+    page_url = '/'
 
     # 百度输入框
     def search_input(self, search_key):
@@ -16,7 +15,6 @@ class BaiduSearchPage(WebDriver):
     # 百度按钮
     def search_button(self):
         self.click("#su")
-        sleep(1)
 
     # 搜索标题
     def search_title(self):
@@ -36,5 +34,5 @@ class BaiduSearchPage(WebDriver):
 
     def get_alert(self):
         text = self.get_alert_text()
-        self.accept_alert()   # 接受警告框
+        #self.accept_alert()   # 接受警告框
         return text
