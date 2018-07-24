@@ -1,0 +1,19 @@
+{
+  "test_search": [
+    {
+      "case_id": "tc001_baidu_search.01",
+      "search_key": "unittest",
+      "assert_title": "unittest_百度搜索"
+    },
+    {
+      "case_id": "tc001_baidu_search.02",
+      "search_key": "selenium",
+      "assert_title": "selenium_百度搜索"
+    },
+    {
+      "case_id": "tc001_baidu_search.03",
+      "search_key": "data driver",
+      "assert_title": "data driver_百度搜索"
+    }
+  ]
+}
