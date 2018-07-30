@@ -1,15 +1,15 @@
 # coding=utf-8
-import os, sys
-parentdir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, parentdir)
+import sys
+from os.path import dirname, abspath
+sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page_obj.baidu_search_page import BaiduSearchPage
 import pytest
 
 
 class TestSearch:
 
-    # 百度搜索 -- 单用例
     def test_baidu_search_case(self, browser):
+        """ 百度搜索：pytest """
         bd = BaiduSearchPage(browser)
         bd.search_input("pytest")
         bd.search_button()
@@ -17,7 +17,6 @@ class TestSearch:
         title = bd.search_title()
         assert title == "pytest_百度搜索"
 
-    # 百度搜索 --参数化
     @pytest.mark.parametrize(
         "name, search_key",
         [("1", "Selenium"),
@@ -27,6 +26,7 @@ class TestSearch:
          ids=["case1", "case2", "case3"]
         )
     def test_baidu_search(self, name, search_key, browser):
+        """百度搜索 --参数化"""
         bd = BaiduSearchPage(browser)
         bd.search_input(search_key)
         bd.search_button()
@@ -37,9 +37,9 @@ class TestSearch:
 
 class TestSearchSettings:
 
-    # 百度搜索设置
     def test_baidu_search_setting(self, browser):
-        bd = BaiduSearchPage(browser, url="http://www.baidu.com")
+        """百度搜索设置"""
+        bd = BaiduSearchPage(browser, url="http://www.baidu.com", timeout=2)
         bd.settings()
         bd.search_setting()
         bd.save_setting()
