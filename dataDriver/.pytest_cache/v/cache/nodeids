@@ -1,1 +1,8 @@
-[]
+[
+  "test_suite_1.py::test_one[1]",
+  "test_suite_1.py::test_one[2]",
+  "test_suite_1.py::test_one[3]",
+  "test_suite_1.py::test_two",
+  "test_suite_1.py::test_three",
+  "test_suite_1.py::test_four"
+]

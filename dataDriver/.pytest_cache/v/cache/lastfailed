@@ -1,3 +1,6 @@
 {
-  "test_baidu.py": true
+  "test_baidu.py": true,
+  "test_baidu2.py": true,
+  "test_suite_1.py::test_four": true,
+  "test_suite_1.py::test_four2": true
 }
