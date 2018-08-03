@@ -1,4 +1,4 @@
-from .common import PageObject, PageElement
+from .common import PageObject, PageElement, PageElements
 
 
 class BaiduSearchPage(PageObject):
@@ -7,3 +7,5 @@ class BaiduSearchPage(PageObject):
     settings = PageElement(link_text="设置")  # 设置
     search_setting = PageElement(css=".setpref")  # 搜索设置
     save_setting = PageElement(css=".prefpanelgo")  # 保存设置
+
+    search_result = PageElements(xpath="//div/h3/a")  # 搜搜结果（定位一组元素）

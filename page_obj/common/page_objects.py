@@ -1,18 +1,23 @@
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 from .page_webdriver import WebDriver
 
+
 # Map PageElement constructor arguments to webdriver locator enums
-_LOCATOR_MAP = {'css': By.CSS_SELECTOR,
-                'id_': By.ID,
-                'name': By.NAME,
-                'xpath': By.XPATH,
-                'link_text': By.LINK_TEXT,
-                'partial_link_text': By.PARTIAL_LINK_TEXT,
-                'tag_name': By.TAG_NAME,
-                'class_name': By.CLASS_NAME,
-                }
+LOCATOR_LIST = {
+    'css': By.CSS_SELECTOR,
+    'id_': By.ID,
+    'name': By.NAME,
+    'xpath': By.XPATH,
+    'link_text': By.LINK_TEXT,
+    'partial_link_text': By.PARTIAL_LINK_TEXT,
+    'tag': By.TAG_NAME,
+    'class': By.CLASS_NAME,
+}
 
 
 class PageObject(WebDriver):
@@ -23,9 +28,9 @@ class PageObject(WebDriver):
         Root URI to base any calls to the ``PageObject.get`` method. If not defined
         in the constructor it will try and look it from the webdriver object.
     """
-    def __init__(self, driver, root_uri=None):
+    def __init__(self, driver, url=None):
         self.driver = driver
-        self.root_uri = root_uri if root_uri else getattr(self.driver, 'root_uri', None)
+        self.root_uri = url if url else getattr(self.driver, 'url', None)
 
     def get(self, uri):
         """
@@ -57,8 +62,8 @@ class PageElement(object):
         This element is expected to be called with context
     Page Elements are used to access elements on a page. The are constructed
     using this factory method to specify the locator for the element.
-        #>>> from page_objects import PageObject, PageElement
-        #>>> class MyPage(PageObject):
+        >> from page_objects import PageObject, PageElement
+        >> class MyPage(PageObject):
                 elem1 = PageElement(css='div.myclass')
                 elem2 = PageElement(id_='foo')
                 elem_with_context = PageElement(name='bar', context=True)
@@ -71,7 +76,10 @@ class PageElement(object):
         if len(kwargs) > 1:
             raise ValueError("Please specify only one locator")
         k, v = next(iter(kwargs.items()))
-        self.locator = (_LOCATOR_MAP[k], v)
+        try:
+            self.locator = (LOCATOR_LIST[k], v)
+        except KeyError:
+            raise KeyError("Please use a locator：'id_'、'name'、'class'、'css'、'xpath'...")
         self.has_context = bool(context)
 
     def find(self, context):
@@ -101,11 +109,11 @@ class PageElement(object):
         elem.send_keys(value)
 
 
-class MultiPageElement(PageElement):
+class PageElements(PageElement):
     """ Like `PageElement` but returns multiple results.
-        >> from page_objects import PageObject, MultiPageElement
+        >> from page_objects import PageObject, PageElements
         >> class MyPage(PageObject):
-                all_table_rows = MultiPageElement(tag='tr')
+                all_table_rows = PageElements(tag='tr')
                 elem2 = PageElement(id_='foo')
                 elem_with_context = PageElement(tag='tr', context=True)
     """
@@ -126,4 +134,4 @@ class MultiPageElement(PageElement):
 
 # Backwards compatibility with previous versions that used factory methods
 page_element = PageElement
-multi_page_element = MultiPageElement
+multi_page_element = PageElements

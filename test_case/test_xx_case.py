@@ -9,16 +9,17 @@ class TestSearch:
 
     def test_baidu_search_case(self, browser):
         """ 百度搜索：pytest """
-        page = BaiduSearchPage(browser, root_uri="https://www.baidu.com")
-        page.get("/")
+        page = BaiduSearchPage(browser)
+        page.get("https://www.baidu.com")
         page.search_input = "pytest"
         page.search_button.click()
-        page.sleep(2)
+        page.sleep(3)
         title = page.driver.title
         title2 = page.get_title()
         print(title2)
+        print(page.search_result[0].text)
         assert title == "pytest_百度搜索"
 
 
 if __name__ == '__main__':
-    pytest.main(["-v", "test_xx_case.py"])
+    pytest.main(["-v", "-s", "test_xx_case.py"])

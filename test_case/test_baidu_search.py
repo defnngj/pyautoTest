@@ -10,11 +10,11 @@ class TestSearch:
 
     def test_baidu_search_case(self, browser):
         """ 百度搜索：pytest """
-        bd = BaiduSearchPage(browser)
-        bd.search_input("pytest")
-        bd.search_button()
-        bd.sleep(1)
-        title = bd.search_title()
+        page = BaiduSearchPage(browser)
+        page.search_input("pytest")
+        page.search_button()
+        page.sleep(1)
+        title = page.search_title()
         assert title == "pytest_百度搜索"
 
     @pytest.mark.parametrize(
@@ -27,11 +27,11 @@ class TestSearch:
         )
     def test_baidu_search(self, name, search_key, browser):
         """百度搜索 --参数化"""
-        bd = BaiduSearchPage(browser)
-        bd.search_input(search_key)
-        bd.search_button()
-        bd.sleep(2)
-        title = bd.search_title()
+        page = BaiduSearchPage(browser)
+        page.search_input(search_key)
+        page.search_button()
+        page.sleep(2)
+        title = page.search_title()
         assert title == search_key+"_百度搜索"
 
 
@@ -39,12 +39,12 @@ class TestSearchSettings:
 
     def test_baidu_search_setting(self, browser):
         """百度搜索设置"""
-        bd = BaiduSearchPage(browser, url="http://www.baidu.com", timeout=2)
-        bd.settings()
-        bd.search_setting()
-        bd.save_setting()
-        bd.sleep(2)
-        assert bd.get_alert() == "已经记录下您的使用偏好"
+        page = BaiduSearchPage(browser, url="http://www.baidu.com", timeout=2)
+        page.settings()
+        page.search_setting()
+        page.save_setting()
+        page.sleep(2)
+        assert page.get_alert() == "已经记录下您的使用偏好"
 
 
 if __name__ == "__main__":
