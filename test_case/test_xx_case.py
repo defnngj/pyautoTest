@@ -17,8 +17,9 @@ class TestSearch:
         title = page.driver.title
         title2 = page.get_title()
         print(title2)
-        print(page.search_result[0].text)
+        result = page.search_result[0].text
         assert title == "pytest_百度搜索"
+        assert "pytest" in result
 
 
 if __name__ == '__main__':

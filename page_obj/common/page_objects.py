@@ -1,9 +1,6 @@
 from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
+from time import sleep
 from .page_webdriver import WebDriver
 
 
@@ -21,14 +18,17 @@ LOCATOR_LIST = {
 
 
 class PageObject(WebDriver):
-    """Page Object pattern.
-    :param webdriver: `selenium.webdriver.WebDriver`
-        Selenium webdriver instance
-    :param root_uri: `str`
+    """
+    Page Object pattern.
+    """
+
+    def __init__(self, driver, url=None):
+        """
+        :param driver: `selenium.webdriver.WebDriver` Selenium webdriver instance
+        :param url: `str`
         Root URI to base any calls to the ``PageObject.get`` method. If not defined
         in the constructor it will try and look it from the webdriver object.
-    """
-    def __init__(self, driver, url=None):
+        """
         self.driver = driver
         self.root_uri = url if url else getattr(self.driver, 'url', None)
 
@@ -41,7 +41,8 @@ class PageObject(WebDriver):
 
 
 class PageElement(object):
-    """Page Element descriptor.
+    """
+    Page Element descriptor.
     :param css:    `str`
         Use this css locator
     :param id_:    `str`
@@ -70,7 +71,11 @@ class PageElement(object):
     Page Elements act as property descriptors for their Page Object, you can get
     and set them as normal attributes.
     """
-    def __init__(self, context=False, **kwargs):
+    def __init__(self, context=False, time_out=None, **kwargs):
+        if time_out is None:
+            self.time_out = 5
+        else:
+            self.time_out = time_out
         if not kwargs:
             raise ValueError("Please specify a locator")
         if len(kwargs) > 1:
@@ -82,10 +87,19 @@ class PageElement(object):
             raise KeyError("Please use a locator：'id_'、'name'、'class'、'css'、'xpath'...")
         self.has_context = bool(context)
 
-    def find(self, context):
+    def wait(self, context):
         try:
             return context.find_element(*self.locator)
         except NoSuchElementException:
+            return None
+
+    def find(self, context):
+        for i in range(self.time_out):
+            if self.wait(context) is not None:
+                return self.wait(context)
+            else:
+                sleep(1)
+        else:
             return None
 
     def __get__(self, instance, owner, context=None):
@@ -110,12 +124,13 @@ class PageElement(object):
 
 
 class PageElements(PageElement):
-    """ Like `PageElement` but returns multiple results.
-        >> from page_objects import PageObject, PageElements
-        >> class MyPage(PageObject):
-                all_table_rows = PageElements(tag='tr')
-                elem2 = PageElement(id_='foo')
-                elem_with_context = PageElement(tag='tr', context=True)
+    """
+    Like `PageElement` but returns multiple results.
+    >> from page_objects import PageObject, PageElements
+    >> class MyPage(PageObject):
+            all_table_rows = PageElements(tag='tr')
+            elem2 = PageElement(id_='foo')
+            elem_with_context = PageElement(tag='tr', context=True)
     """
     def find(self, context):
         try:
