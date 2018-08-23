@@ -10,15 +10,32 @@ from py.xml import html
 driver = None
 
 
+# 描述和运行时间表头
+@pytest.mark.optionalhook
+def pytest_html_results_table_header(cells):
+    cells.insert(2, html.th('Description'))
+    cells.insert(1, html.th('Time', class_='sortable time', col='time'))
+    cells.pop()
+
+
+# 描述和运行时间表格
+@pytest.mark.optionalhook
+def pytest_html_results_table_row(report, cells):
+    cells.insert(2, html.td(report.description))
+    cells.insert(1, html.td(datetime.utcnow(), class_='col-time'))
+    cells.pop()
+
+
 @pytest.mark.hookwrapper
 def pytest_runtest_makereport(item):
     """
-    Extends the PyTest Plugin to take and embed screenshot in html report, whenever test fails.
+    用于向测试用例中添加用例的开始时间、内部注释，和失败截图等.
     :param item:
     """
     pytest_html = item.config.pluginmanager.getplugin('html')
     outcome = yield
     report = outcome.get_result()
+    report.description = str(item.function.__doc__)
     extra = getattr(report, 'extra', [])
     if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')
@@ -77,30 +94,6 @@ def browser_close():
     yield driver
     driver.quit()
     print("test end!")
-
-
-# 描述和运行时间表头
-@pytest.mark.optionalhook
-def pytest_html_results_table_header(cells):
-    cells.insert(2, html.th('Description'))
-    cells.insert(1, html.th('Time', class_='sortable time', col='time'))
-    cells.pop()
-
-
-# 描述和运行时间表格
-@pytest.mark.optionalhook
-def pytest_html_results_table_row(report, cells):
-    cells.insert(2, html.td(report.description))
-    cells.insert(1, html.td(datetime.utcnow(), class_='col-time'))
-    cells.pop()
-
-
-# 描述和运行时间输出
-@pytest.mark.hookwrapper
-def pytest_runtest_makereport(item, call):
-    outcome = yield
-    report = outcome.get_result()
-    report.description = str(item.function.__doc__)
 
 
 if __name__ == "__main__":
