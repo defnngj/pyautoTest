@@ -1,6 +1,0 @@
-{
-    "test_one": [1, 2, 3],
-    "test_two": "split",
-    "test_three": {"three": 3},
-    "test_four": {"four": 4}
-}

@@ -1,0 +1,22 @@
+{
+    "test_login_01":{
+        "username":"",
+        "password":"123"
+    },
+    "test_login_02":{
+        "username":"user",
+        "password":""
+    },
+    "test_login_03":{
+        "username":"error",
+        "password":"error"
+    },
+    "test_login_04":{
+        "username":"admin",
+        "password":"admin123456"
+    },
+    "test_one": [1, 2, 3],
+    "test_two": "split",
+    "test_three": {"three": 3},
+    "test_four": {"four": 4}
+}

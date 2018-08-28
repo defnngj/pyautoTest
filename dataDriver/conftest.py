@@ -6,7 +6,7 @@ import pytest
 @pytest.fixture(scope="class")
 def test_config(request):
     f = pathlib.Path(request.node.fspath.strpath)
-    config = f.with_name("config.json")
+    config = f.with_name("login_data.json")
     with config.open() as fd:
         testdata = json.loads(fd.read())
     yield testdata
@@ -26,7 +26,7 @@ def config_data(request, test_config):
 def pytest_generate_tests(metafunc):
     if 'config_data' not in metafunc.fixturenames:
         return
-    config = pathlib.Path(metafunc.module.__file__).with_name('config.json')
+    config = pathlib.Path(metafunc.module.__file__).with_name('login_data.json')
     testdata = json.loads(config.read_text())
     param = testdata.get(metafunc.function.__name__, None)
     if isinstance(param, list):
