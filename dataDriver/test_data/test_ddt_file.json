@@ -1,22 +1,22 @@
 {
-    "positive_integer_range": {
-        "start": 0,
-        "end": 2,
-        "value": 1
+    "test_login_01":{
+        "username":"",
+        "password":"123",
+        "assert_text": "请输入帐号"
     },
-    "negative_integer_range": {
-        "start": -2,
-        "end": 0,
-        "value": -1
+    "test_login_02":{
+        "username":"user",
+        "password":"",
+        "assert_text": "请输入密码"
     },
-    "positive_real_range": {
-        "start": 0.0,
-        "end": 1.0,
-        "value": 0.5
+    "test_login_03":{
+        "username":"error",
+        "password":"error",
+        "assert_text": "帐号或密码错误"
     },
-    "negative_real_range": {
-        "start": -1.0,
-        "end": 0.0,
-        "value": -0.5
+    "test_login_04":{
+        "username":"admin",
+        "password":"admin123456",
+        "assert_text": "admin你好"
     }
 }
