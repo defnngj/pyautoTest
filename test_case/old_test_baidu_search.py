@@ -2,8 +2,11 @@
 import sys
 from os.path import dirname, abspath
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
-from page_obj.baidu_search_page import BaiduSearchPage
+from page.baidu_search_page import BaiduSearchPage
 import pytest
+"""
+废弃
+"""
 
 
 class TestSearch:
@@ -48,4 +51,4 @@ class TestSearchSettings:
 
 
 if __name__ == "__main__":
-    pytest.main(["-s", "test_baidu_search.py::TestSearchSettings"])
+    pass

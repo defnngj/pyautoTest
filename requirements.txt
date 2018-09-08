@@ -1,6 +1,6 @@
-selenium==3.13.0
-pytest==3.6.3
-pytest-html==1.19
+selenium==3.14.0
+pytest==3.7.4
+pytest-html==1.19.0
 pytest-rerunfailures==4.1
 click==6.7
 ddt==1.2.0
