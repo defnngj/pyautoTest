@@ -1,6 +1,6 @@
-selenium==3.14.0
-pytest==3.7.4
-pytest-html==1.19.0
-pytest-rerunfailures==4.1
+selenium==3.14.1
+pytest==3.10
+pytest-html==1.16.1
+pytest-rerunfailures==4.2
 click==6.7
 ddt==1.2.0

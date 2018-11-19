@@ -4,6 +4,8 @@ from .common import WebDriver
 """
 废弃
 """
+
+
 class BaiduSearchPage(WebDriver):
     """
     百度首页

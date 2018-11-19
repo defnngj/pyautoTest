@@ -13,6 +13,10 @@
 __selenium：__ Web自动化测试库
 https://pypi.python.org/pypi/selenium
 
+__selenium-page-objects：__ 实现page层的封装（需要单独安装）
+
+https://github.com/defnngj/selenium_page_objects
+
 __pytest：__ 单元测试框架
 https://pypi.python.org/pypi/pytest
 
@@ -25,7 +29,9 @@ https://pypi.python.org/pypi/pytest-rerunfailures
 #### 安装：
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
+
+$ pip install -i https://test.pypi.org/simple/ selenium-page-objects
 ```
 
 #### 运行：
