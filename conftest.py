@@ -1,3 +1,4 @@
+import os
 from os.path import abspath, dirname
 from datetime import datetime
 
@@ -8,8 +9,29 @@ from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options as CH_Options
 from selenium.webdriver.firefox.options import Options as FF_Options
 
+
+############################
+
 # 配置浏览器驱动类型。
-driver = "chrome"
+driver = "grid"
+
+# 配置运行的 URL
+url = "https://www.baidu.com"
+
+# 失败重跑次数
+rerun = 0
+
+# 运行测试用例的目录或文件
+cases_path = "./test_case/"
+
+############################
+
+
+# 定义基本测试环境
+@pytest.fixture(scope='function')
+def base_url():
+    global url
+    return url
 
 
 # 描述和运行时间表头
@@ -48,8 +70,7 @@ def pytest_runtest_makereport(item):
             else:
                 file_name = file_name_
             _capture_screenshot(file_name)
-            file_name = file_name.replace('test_case/', 'image/')
-            # image/test_baidu_search.py_test_baidu_search1.png
+            file_name = "image/" + file_name.split("/")[-1]
             if file_name:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
                             'onclick="window.open(this.src)" align="right"/></div>' % file_name
@@ -59,15 +80,16 @@ def pytest_runtest_makereport(item):
 
 # 配置用例失败截图路径
 def _capture_screenshot(name):
-    print(name)
-    try:
-        file_name = name.split("test_case/")[1]
-        print(file_name)
-    except IndexError:
-        file_name = name
-    base_dir = dirname(abspath(__file__))
-    file_path = base_dir + "/test_report/image/" + file_name
-    driver.save_screenshot(file_path)
+    global driver
+    file_name = name.split("/")[-1]
+    base_path = dirname(abspath(__file__))
+    image_path = base_path + "/test_report/image/"
+
+    image_folder = os.path.exists(image_path)
+    if image_folder is not True:
+        os.mkdir(image_path)
+
+    driver.save_screenshot(image_path + file_name)
 
 
 # 启动浏览器
@@ -103,8 +125,8 @@ def browser():
         firefox_options.headless = True
         driver = webdriver.Firefox(firefox_options=firefox_options)
 
-    elif driver == "jenkins":
-        # Jenkins使用节点运行
+    elif driver == "grid":
+        # 通过远程节点运行
         driver = Remote(command_executor='http://10.2.16.182:4444/wd/hub',
                         desired_capabilities={
                               "browserName": "chrome",

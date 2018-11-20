@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="1" name="pytest" skips="0" tests="5" time="17.167"><testcase classname="test_case.test_baidu.TestSearch" file="test_case/test_baidu.py" line="11" name="test_baidu_search_case" time="5.57958722114563"><failure message="AssertionError: assert &apos;pytest_百度搜索&apos; == &apos;pytest_百度搜索222&apos;
+  - pytest_百度搜索
+  + pytest_百度搜索222
+  ?            +++">self = &lt;pyautoTest.test_case.test_baidu.TestSearch object at 0x106c7bac8&gt;
+browser = &lt;selenium.webdriver.remote.webdriver.WebDriver (session=&quot;87fcaf0cefdb9e8d61c4b40330741af4&quot;)&gt;
+base_url = &apos;https://www.baidu.com&apos;
+
+    def test_baidu_search_case(self, browser, base_url):
+        &quot;&quot;&quot; 百度搜索：pytest &quot;&quot;&quot;
+        page = BaiduPage(browser)
+        page.get(base_url)
+        page.search_input.send_keys(&quot;pytest&quot;)
+        page.search_button.click()
+        sleep(2)
+&gt;       assert browser.title == &quot;pytest_百度搜索222&quot;
+E       AssertionError: assert &apos;pytest_百度搜索&apos; == &apos;pytest_百度搜索222&apos;
+E         - pytest_百度搜索
+E         + pytest_百度搜索222
+E         ?            +++
+
+test_case/test_baidu.py:19: AssertionError</failure></testcase><testcase classname="test_case.test_baidu.TestSearch" file="test_case/test_baidu.py" line="20" name="test_baidu_search[case1]" time="2.6691062450408936"></testcase><testcase classname="test_case.test_baidu.TestSearch" file="test_case/test_baidu.py" line="20" name="test_baidu_search[case2]" time="3.0523974895477295"></testcase><testcase classname="test_case.test_baidu.TestSearch" file="test_case/test_baidu.py" line="20" name="test_baidu_search[case3]" time="2.4893813133239746"></testcase><testcase classname="test_case.test_baidu.TestSearchSettings" file="test_case/test_baidu.py" line="41" name="test_baidu_search_setting" time="2.678126573562622"></testcase></testsuite>
