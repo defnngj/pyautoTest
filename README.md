@@ -26,6 +26,10 @@ https://pypi.python.org/pypi/pytest-html
 __pytest-rerunfailures：__ 失败重跑
 https://pypi.python.org/pypi/pytest-rerunfailures
 
+__pytest-parallel:__ 多线程并行
+
+https://pypi.org/project/pytest-parallel/
+
 #### 安装：
 
 ```
