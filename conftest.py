@@ -1,13 +1,17 @@
 import os
 from os.path import abspath, dirname
 from datetime import datetime
-
 import pytest
 from py.xml import html
 from selenium import webdriver
 from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options as CH_Options
 from selenium.webdriver.firefox.options import Options as FF_Options
+
+# 项目目录配置
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+REPORT_DIR = BASE_DIR + "/test_report/"
+IMAGE_DIR = REPORT_DIR + "image/"
 
 
 ############################
@@ -70,26 +74,28 @@ def pytest_runtest_makereport(item):
             else:
                 file_name = file_name_
             _capture_screenshot(file_name)
-            file_name = "image/" + file_name.split("/")[-1]
-            if file_name:
+            img_path = "image/" + file_name.split("/")[-1]
+            if img_path:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
-                            'onclick="window.open(this.src)" align="right"/></div>' % file_name
+                       'onclick="window.open(this.src)" align="right"/></div>' % img_path
                 extra.append(pytest_html.extras.html(html))
         report.extra = extra
 
 
 # 配置用例失败截图路径
+# 设置截图保存位置
 def _capture_screenshot(name):
+    """
+    配置用例失败截图路径
+    :param name: 文件名
+    :return:
+    """
     global driver
     file_name = name.split("/")[-1]
-    base_path = dirname(abspath(__file__))
-    image_path = base_path + "/test_report/image/"
-
-    image_folder = os.path.exists(image_path)
+    image_folder = os.path.exists(IMAGE_DIR)
     if image_folder is not True:
-        os.mkdir(image_path)
-
-    driver.save_screenshot(image_path + file_name)
+        os.mkdir(IMAGE_DIR)
+    driver.save_screenshot(IMAGE_DIR + file_name)
 
 
 # 启动浏览器
