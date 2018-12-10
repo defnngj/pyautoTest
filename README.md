@@ -13,8 +13,8 @@ $ pip install -r requirements.txt
 
 $ pip install -i https://test.pypi.org/simple/ selenium-page-objects
 ```
-#### 配置
-在__conftest.py__文件配置：
+#### 配置：
+在 __conftest.py__ 文件配置
 
 ```python
 # 配置浏览器驱动类型。
