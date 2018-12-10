@@ -1,7 +1,0 @@
-[
-  "test_baidu.py::TestSearch::()::test_baidu_search_case",
-  "test_baidu.py::TestSearch::()::test_baidu_search[case1]",
-  "test_baidu.py::TestSearch::()::test_baidu_search[case2]",
-  "test_baidu.py::TestSearch::()::test_baidu_search[case3]",
-  "test_baidu.py::TestSearchSettings::()::test_baidu_search_setting"
-]
