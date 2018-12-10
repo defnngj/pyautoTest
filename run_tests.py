@@ -10,14 +10,9 @@ from conftest import cases_path, rerun
 '''
 说明：
 1、用例创建原则，测试文件名必须以“test”开头，测试函数必须以“test”开头。
-2、用例运行策略，
-*  -s 指定运行目录或文件，例: -s  ./test_case/ ,  -s  /test_case/test_demo.py
-*  --html  指定测试报告目录及文件名。
-*  --self-contained-html 表示创建独立的测试报告。
-*  --reruns 3   指定用例失败重跑次数。
-3、运行方式
-*  > python3 run_tests.py  (回归模式，生成HTML报告)
-*  > python3 run_tests.py --method debug  (调试模式)
+2、运行方式：
+  > python3 run_tests.py  (回归模式，生成HTML报告)
+  > python3 run_tests.py --method debug  (调试模式)
 '''
 
 

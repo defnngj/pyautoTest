@@ -17,16 +17,16 @@ IMAGE_DIR = REPORT_DIR + "image/"
 ############################
 
 # 配置浏览器驱动类型。
-driver = "grid"
+driver = "chrome"
 
 # 配置运行的 URL
 url = "https://www.baidu.com"
 
 # 失败重跑次数
-rerun = 0
+rerun = "3"
 
 # 运行测试用例的目录或文件
-cases_path = "./test_case/"
+cases_path = "./test_dir/"
 
 ############################
 
@@ -154,4 +154,4 @@ def browser_close():
 
 
 if __name__ == "__main__":
-    _capture_screenshot("test_case/test_baidu_search.test_search_python.png")
+    _capture_screenshot("test_dir/test_baidu_search.test_search_python.png")

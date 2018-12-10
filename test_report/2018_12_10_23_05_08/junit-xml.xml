@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="1" failures="1" name="pytest" skips="0" tests="5" time="27.270"><testcase classname="test_dir.test_baidu.TestSearch" file="test_dir\test_baidu.py" line="11" name="test_baidu_search_case" time="16.005698442459106"><failure message="AssertionError: assert &apos;pytest_百度搜索&apos; == &apos;pytest_百度搜索222&apos;
+  - pytest_百度搜索
+  + pytest_百度搜索222
+  ?            +++">self = &lt;test_dir.test_baidu.TestSearch object at 0x0000017BE397FF98&gt;
+browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;3d09e555759071f0944459e2f351d084&quot;)&gt;
+base_url = &apos;https://www.baidu.com&apos;
+
+    def test_baidu_search_case(self, browser, base_url):
+        &quot;&quot;&quot; 百度搜索：pytest &quot;&quot;&quot;
+        page = BaiduPage(browser)
+        page.get(base_url)
+        page.search_input.send_keys(&quot;pytest&quot;)
+        page.search_button.click()
+        sleep(2)
+&gt;       assert browser.title == &quot;pytest_百度搜索222&quot;
+E       AssertionError: assert &apos;pytest_百度搜索&apos; == &apos;pytest_百度搜索222&apos;
+E         - pytest_百度搜索
+E         + pytest_百度搜索222
+E         ?            +++
+
+test_dir\test_baidu.py:19: AssertionError</failure></testcase><testcase classname="test_dir.test_baidu.TestSearch" file="test_dir\test_baidu.py" line="20" name="test_baidu_search[case1]" time="2.3899550437927246"></testcase><testcase classname="test_dir.test_baidu.TestSearch" file="test_dir\test_baidu.py" line="20" name="test_baidu_search[case2]" time="2.374488353729248"></testcase><testcase classname="test_dir.test_baidu.TestSearch" file="test_dir\test_baidu.py" line="20" name="test_baidu_search[case3]" time="2.401388168334961"></testcase><testcase classname="pytest" name="internal" time="0"><error message="internal error">Traceback (most recent call last):
+  File &quot;C:\Python36\lib\site-packages\_pytest\main.py&quot;, line 185, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+  File &quot;C:\Python36\lib\site-packages\_pytest\main.py&quot;, line 225, in _main
+    config.hook.pytest_runtestloop(session=session)
+  File &quot;C:\Python36\lib\site-packages\pluggy\hooks.py&quot;, line 284, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File &quot;C:\Python36\lib\site-packages\pluggy\manager.py&quot;, line 67, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File &quot;C:\Python36\lib\site-packages\pluggy\manager.py&quot;, line 61, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get(&quot;firstresult&quot;) if hook.spec else False,
+  File &quot;C:\Python36\lib\site-packages\pluggy\callers.py&quot;, line 208, in _multicall
+    return outcome.get_result()
+  File &quot;C:\Python36\lib\site-packages\pluggy\callers.py&quot;, line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File &quot;C:\Python36\lib\site-packages\pluggy\callers.py&quot;, line 187, in _multicall
+    res = hook_impl.function(*args)
+  File &quot;C:\Python36\lib\site-packages\_pytest\main.py&quot;, line 246, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+  File &quot;C:\Python36\lib\site-packages\pluggy\hooks.py&quot;, line 284, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File &quot;C:\Python36\lib\site-packages\pluggy\manager.py&quot;, line 67, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File &quot;C:\Python36\lib\site-packages\pluggy\manager.py&quot;, line 61, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get(&quot;firstresult&quot;) if hook.spec else False,
+  File &quot;C:\Python36\lib\site-packages\pluggy\callers.py&quot;, line 208, in _multicall
+    return outcome.get_result()
+  File &quot;C:\Python36\lib\site-packages\pluggy\callers.py&quot;, line 80, in get_result
+    raise ex[1].with_traceback(ex[2])
+  File &quot;C:\Python36\lib\site-packages\pluggy\callers.py&quot;, line 187, in _multicall
+    res = hook_impl.function(*args)
+  File &quot;C:\Python36\lib\site-packages\pytest_rerunfailures.py&quot;, line 175, in pytest_runtest_protocol
+    reports = runtestprotocol(item, nextitem=nextitem, log=False)
+  File &quot;C:\Python36\lib\site-packages\_pytest\runner.py&quot;, line 91, in runtestprotocol
+    reports.append(call_and_report(item, &quot;call&quot;, log))
+  File &quot;C:\Python36\lib\site-packages\_pytest\runner.py&quot;, line 173, in call_and_report
+    report = hook.pytest_runtest_makereport(item=item, call=call)
+  File &quot;C:\Python36\lib\site-packages\pluggy\hooks.py&quot;, line 284, in __call__
+    return self._hookexec(self, self.get_hookimpls(), kwargs)
+  File &quot;C:\Python36\lib\site-packages\pluggy\manager.py&quot;, line 67, in _hookexec
+    return self._inner_hookexec(hook, methods, kwargs)
+  File &quot;C:\Python36\lib\site-packages\pluggy\manager.py&quot;, line 61, in &lt;lambda&gt;
+    firstresult=hook.spec.opts.get(&quot;firstresult&quot;) if hook.spec else False,
+  File &quot;C:\Python36\lib\site-packages\pluggy\callers.py&quot;, line 203, in _multicall
+    gen.send(outcome)
+  File &quot;D:\git\pyautoTest\conftest.py&quot;, line 76, in pytest_runtest_makereport
+    _capture_screenshot(file_name)
+  File &quot;D:\git\pyautoTest\conftest.py&quot;, line 98, in _capture_screenshot
+    driver.save_screenshot(IMAGE_DIR + file_name)
+  File &quot;C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py&quot;, line 1055, in save_screenshot
+    return self.get_screenshot_as_file(filename)
+  File &quot;C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py&quot;, line 1032, in get_screenshot_as_file
+    png = self.get_screenshot_as_png()
+  File &quot;C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py&quot;, line 1064, in get_screenshot_as_png
+    return base64.b64decode(self.get_screenshot_as_base64().encode(&apos;ascii&apos;))
+  File &quot;C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py&quot;, line 1074, in get_screenshot_as_base64
+    return self.execute(Command.SCREENSHOT)[&apos;value&apos;]
+  File &quot;C:\Python36\lib\site-packages\selenium\webdriver\remote\webdriver.py&quot;, line 321, in execute
+    self.error_handler.check_response(response)
+  File &quot;C:\Python36\lib\site-packages\selenium\webdriver\remote\errorhandler.py&quot;, line 241, in check_response
+    raise exception_class(message, screen, stacktrace, alert_text)
+selenium.common.exceptions.UnexpectedAlertPresentException: Alert Text: None
+Message: unexpected alert open: {Alert text : 已经记录下您的使用偏好}
+  (Session info: chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.37.544315 (730aa6a5fdba159ac9f4c1e8cbc59bf1b5ce12b7),platform=Windows NT 10.0.17134 x86_64)</error></testcase></testsuite>

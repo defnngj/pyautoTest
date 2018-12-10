@@ -385,24 +385,27 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <p>Report generated on 20-Nov-2018 at 19:38:40 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.1</p>
+    <p>Report generated on 10-Dec-2018 at 23:05:35 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
+        <td>JAVA_HOME</td>
+        <td>D:\Java\jdk1.8.0_144</td></tr>
+      <tr>
         <td>Packages</td>
-        <td>{&apos;pytest&apos;: &apos;3.10.0&apos;, &apos;py&apos;: &apos;1.5.2&apos;, &apos;pluggy&apos;: &apos;0.8.0&apos;}</td></tr>
+        <td>{&apos;pytest&apos;: &apos;4.0.1&apos;, &apos;py&apos;: &apos;1.5.2&apos;, &apos;pluggy&apos;: &apos;0.8.0&apos;}</td></tr>
       <tr>
         <td>Platform</td>
-        <td>Darwin-18.0.0-x86_64-i386-64bit</td></tr>
+        <td>Windows-10-10.0.17134-SP0</td></tr>
       <tr>
         <td>Plugins</td>
-        <td>{&apos;rerunfailures&apos;: &apos;4.2&apos;, &apos;print&apos;: &apos;0.1.0&apos;, &apos;metadata&apos;: &apos;1.6.0&apos;, &apos;logger&apos;: &apos;0.3.0&apos;, &apos;html&apos;: &apos;1.16.1&apos;, &apos;annotate&apos;: &apos;1.0.2&apos;}</td></tr>
+        <td>{&apos;rerunfailures&apos;: &apos;5.0&apos;, &apos;parallel&apos;: &apos;0.0.9&apos;, &apos;metadata&apos;: &apos;1.5.1&apos;, &apos;html&apos;: &apos;1.16.1&apos;}</td></tr>
       <tr>
         <td>Python</td>
-        <td>3.6.4</td></tr></table>
+        <td>3.6.3</td></tr></table>
     <h2>Summary</h2>
-    <p>5 tests ran in 17.17 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">4 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <p>4 tests ran in 27.27 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">3 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">3 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -417,51 +420,74 @@ function filter_table(elem) {
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
-          <td class="col-time">2018-11-20 11:38:29.697322</td>
-          <td class="col-name">test_case/test_baidu.py::TestSearch::()::test_baidu_search_case</td>
+          <td class="col-time">2018-12-10 15:05:26.172220</td>
+          <td class="col-name">test_dir/test_baidu.py::TestSearch::test_baidu_search_case</td>
           <td> 百度搜索：pytest </td>
-          <td class="col-duration">4.01</td></tr>
+          <td class="col-duration">2.39</td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div><div><img src="image/test_baidu.py_TestSearch_()_test_baidu_search_case.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
-            <div class="log">self = &lt;pyautoTest.test_case.test_baidu.TestSearch object at 0x106c7bac8&gt;<br/>browser = &lt;selenium.webdriver.remote.webdriver.WebDriver (session=&quot;87fcaf0cefdb9e8d61c4b40330741af4&quot;)&gt;<br/>base_url = &#x27;https://www.baidu.com&#x27;<br/><br/>    def test_baidu_search_case(self, browser, base_url):<br/>        &quot;&quot;&quot; 百度搜索：pytest &quot;&quot;&quot;<br/>        page = BaiduPage(browser)<br/>        page.get(base_url)<br/>        page.search_input.send_keys(&quot;pytest&quot;)<br/>        page.search_button.click()<br/>        sleep(2)<br/>&gt;       assert browser.title == &quot;pytest_百度搜索222&quot;<br/><span class="error">E       AssertionError: assert &#x27;pytest_百度搜索&#x27; == &#x27;pytest_百度搜索222&#x27;</span><br/><span class="error">E         - pytest_百度搜索</span><br/><span class="error">E         + pytest_百度搜索222</span><br/><span class="error">E         ?            +++</span><br/><br/>test_case/test_baidu.py:19: AssertionError<br/></div></td></tr></tbody>
+            <div><div><img src="image/test_baidu.py_TestSearch_test_baidu_search_case.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;test_dir.test_baidu.TestSearch object at 0x0000017BE397FF98&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;3d09e555759071f0944459e2f351d084&quot;)&gt;<br/>base_url = &#x27;https://www.baidu.com&#x27;<br/><br/>    def test_baidu_search_case(self, browser, base_url):<br/>        &quot;&quot;&quot; 百度搜索：pytest &quot;&quot;&quot;<br/>        page = BaiduPage(browser)<br/>        page.get(base_url)<br/>        page.search_input.send_keys(&quot;pytest&quot;)<br/>        page.search_button.click()<br/>        sleep(2)<br/>&gt;       assert browser.title == &quot;pytest_百度搜索222&quot;<br/><span class="error">E       AssertionError: assert &#x27;pytest_百度搜索&#x27; == &#x27;pytest_百度搜索222&#x27;</span><br/><span class="error">E         - pytest_百度搜索</span><br/><span class="error">E         + pytest_百度搜索222</span><br/><span class="error">E         ?            +++</span><br/><br/>test_dir\test_baidu.py:19: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="rerun results-table-row">
+        <tr>
+          <td class="col-result">Rerun</td>
+          <td class="col-time">2018-12-10 15:05:17.876481</td>
+          <td class="col-name">test_dir/test_baidu.py::TestSearch::test_baidu_search_case</td>
+          <td> 百度搜索：pytest </td>
+          <td class="col-duration">3.19</td></tr>
+        <tr>
+          <td class="extra" colspan="5">
+            <div><div><img src="image/test_baidu.py_TestSearch_test_baidu_search_case.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;test_dir.test_baidu.TestSearch object at 0x0000017BE38CFE48&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;3d09e555759071f0944459e2f351d084&quot;)&gt;<br/>base_url = &#x27;https://www.baidu.com&#x27;<br/><br/>    def test_baidu_search_case(self, browser, base_url):<br/>        &quot;&quot;&quot; 百度搜索：pytest &quot;&quot;&quot;<br/>        page = BaiduPage(browser)<br/>        page.get(base_url)<br/>        page.search_input.send_keys(&quot;pytest&quot;)<br/>        page.search_button.click()<br/>        sleep(2)<br/>&gt;       assert browser.title == &quot;pytest_百度搜索222&quot;<br/><span class="error">E       AssertionError: assert &#x27;pytest_百度搜索&#x27; == &#x27;pytest_百度搜索222&#x27;</span><br/><span class="error">E         - pytest_百度搜索</span><br/><span class="error">E         + pytest_百度搜索222</span><br/><span class="error">E         ?            +++</span><br/><br/>test_dir\test_baidu.py:19: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="rerun results-table-row">
+        <tr>
+          <td class="col-result">Rerun</td>
+          <td class="col-time">2018-12-10 15:05:20.624120</td>
+          <td class="col-name">test_dir/test_baidu.py::TestSearch::test_baidu_search_case</td>
+          <td> 百度搜索：pytest </td>
+          <td class="col-duration">2.38</td></tr>
+        <tr>
+          <td class="extra" colspan="5">
+            <div><div><img src="image/test_baidu.py_TestSearch_test_baidu_search_case.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;test_dir.test_baidu.TestSearch object at 0x0000017BE3955DA0&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;3d09e555759071f0944459e2f351d084&quot;)&gt;<br/>base_url = &#x27;https://www.baidu.com&#x27;<br/><br/>    def test_baidu_search_case(self, browser, base_url):<br/>        &quot;&quot;&quot; 百度搜索：pytest &quot;&quot;&quot;<br/>        page = BaiduPage(browser)<br/>        page.get(base_url)<br/>        page.search_input.send_keys(&quot;pytest&quot;)<br/>        page.search_button.click()<br/>        sleep(2)<br/>&gt;       assert browser.title == &quot;pytest_百度搜索222&quot;<br/><span class="error">E       AssertionError: assert &#x27;pytest_百度搜索&#x27; == &#x27;pytest_百度搜索222&#x27;</span><br/><span class="error">E         - pytest_百度搜索</span><br/><span class="error">E         + pytest_百度搜索222</span><br/><span class="error">E         ?            +++</span><br/><br/>test_dir\test_baidu.py:19: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="rerun results-table-row">
+        <tr>
+          <td class="col-result">Rerun</td>
+          <td class="col-time">2018-12-10 15:05:23.377136</td>
+          <td class="col-name">test_dir/test_baidu.py::TestSearch::test_baidu_search_case</td>
+          <td> 百度搜索：pytest </td>
+          <td class="col-duration">2.35</td></tr>
+        <tr>
+          <td class="extra" colspan="5">
+            <div><div><img src="image/test_baidu.py_TestSearch_test_baidu_search_case.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;test_dir.test_baidu.TestSearch object at 0x0000017BE3955E80&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;3d09e555759071f0944459e2f351d084&quot;)&gt;<br/>base_url = &#x27;https://www.baidu.com&#x27;<br/><br/>    def test_baidu_search_case(self, browser, base_url):<br/>        &quot;&quot;&quot; 百度搜索：pytest &quot;&quot;&quot;<br/>        page = BaiduPage(browser)<br/>        page.get(base_url)<br/>        page.search_input.send_keys(&quot;pytest&quot;)<br/>        page.search_button.click()<br/>        sleep(2)<br/>&gt;       assert browser.title == &quot;pytest_百度搜索222&quot;<br/><span class="error">E       AssertionError: assert &#x27;pytest_百度搜索&#x27; == &#x27;pytest_百度搜索222&#x27;</span><br/><span class="error">E         - pytest_百度搜索</span><br/><span class="error">E         + pytest_百度搜索222</span><br/><span class="error">E         ?            +++</span><br/><br/>test_dir\test_baidu.py:19: AssertionError<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-time">2018-11-20 11:38:32.368453</td>
-          <td class="col-name">test_case/test_baidu.py::TestSearch::()::test_baidu_search[case1]</td>
+          <td class="col-time">2018-12-10 15:05:28.562175</td>
+          <td class="col-name">test_dir/test_baidu.py::TestSearch::test_baidu_search[case1]</td>
           <td>百度搜索 --参数化</td>
-          <td class="col-duration">2.67</td></tr>
+          <td class="col-duration">2.39</td></tr>
         <tr>
           <td class="extra" colspan="5">
             <div class="empty log">No log output captured.</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-time">2018-11-20 11:38:35.422036</td>
-          <td class="col-name">test_case/test_baidu.py::TestSearch::()::test_baidu_search[case2]</td>
+          <td class="col-time">2018-12-10 15:05:30.936663</td>
+          <td class="col-name">test_dir/test_baidu.py::TestSearch::test_baidu_search[case2]</td>
           <td>百度搜索 --参数化</td>
-          <td class="col-duration">3.05</td></tr>
+          <td class="col-duration">2.37</td></tr>
         <tr>
           <td class="extra" colspan="5">
             <div class="empty log">No log output captured.</div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-time">2018-11-20 11:38:37.913557</td>
-          <td class="col-name">test_case/test_baidu.py::TestSearch::()::test_baidu_search[case3]</td>
+          <td class="col-time">2018-12-10 15:05:33.338051</td>
+          <td class="col-name">test_dir/test_baidu.py::TestSearch::test_baidu_search[case3]</td>
           <td>百度搜索 --参数化</td>
-          <td class="col-duration">2.49</td></tr>
-        <tr>
-          <td class="extra" colspan="5">
-            <div class="empty log">No log output captured.</div></td></tr></tbody>
-      <tbody class="passed results-table-row">
-        <tr>
-          <td class="col-result">Passed</td>
-          <td class="col-time">2018-11-20 11:38:40.551040</td>
-          <td class="col-name">test_case/test_baidu.py::TestSearchSettings::()::test_baidu_search_setting</td>
-          <td>百度搜索设置</td>
-          <td class="col-duration">2.64</td></tr>
+          <td class="col-duration">2.40</td></tr>
         <tr>
           <td class="extra" colspan="5">
             <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>
