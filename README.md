@@ -1,6 +1,7 @@
 # pyautoTest Web UI 自动化项目
 
 #### 特点：
+
 * 全局配置浏览器启动/关闭。
 * 测试用例运行失败自动截图。
 * 测试用例运行失败可以重跑。
@@ -8,12 +9,12 @@
 
 #### 安装：
 
-```
+```shell
 $ pip install -r requirements.txt
-
-$ pip install -i https://test.pypi.org/simple/ selenium-page-objects
 ```
+
 #### 配置：
+
 在 __conftest.py__ 文件配置
 
 ```python
