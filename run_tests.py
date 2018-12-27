@@ -51,8 +51,8 @@ def init_env(now_time):
 
 @click.command()
 @click.option('-m', default=None)
-def run(method):
-    if method is None:
+def run(m):
+    if m is None:
         print("回归模式，执行完成生成测试结果")
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
         init_env(now_time)
@@ -61,7 +61,7 @@ def run(method):
                      "--junit-xml=" + REPORT_DIR + now_time + "/junit-xml.xml",
                      "--self-contained-html",
                      "--reruns", rerun])
-    elif method == "debug":
+    elif m == "debug":
         print("debug模式运行测试用例：")
         pytest.main(["-v", "-s", cases_path])
         print("运行结束！！")

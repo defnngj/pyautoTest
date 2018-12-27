@@ -68,13 +68,13 @@ def pytest_runtest_makereport(item):
     if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')
         if (report.skipped and xfail) or (report.failed and not xfail):
-            file_name_ = report.nodeid.replace("::", "_") + ".png"
-            if "[" in file_name_:
-                file_name = file_name_.split("-")[0] + "].png"
+            case_path = report.nodeid.replace("::", "_") + ".png"
+            if "[" in case_path:
+                case_name = case_path.split("-")[0] + "].png"
             else:
-                file_name = file_name_
-            _capture_screenshot(file_name)
-            img_path = "image/" + file_name.split("/")[-1]
+                case_name = case_path
+            capture_screenshot(case_name)
+            img_path = "image/" + case_name.split("/")[-1]
             if img_path:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
                        'onclick="window.open(this.src)" align="right"/></div>' % img_path
@@ -84,14 +84,14 @@ def pytest_runtest_makereport(item):
 
 # 配置用例失败截图路径
 # 设置截图保存位置
-def _capture_screenshot(name):
+def capture_screenshot(case_name):
     """
     配置用例失败截图路径
-    :param name: 文件名
+    :param case_name: 用例名
     :return:
     """
     global driver
-    file_name = name.split("/")[-1]
+    file_name = case_name.split("/")[-1]
     image_folder = os.path.exists(IMAGE_DIR)
     if image_folder is not True:
         os.mkdir(IMAGE_DIR)
