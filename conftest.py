@@ -16,7 +16,7 @@ IMAGE_DIR = REPORT_DIR + "image/"
 
 ############################
 
-# 配置浏览器驱动类型。
+# 配置浏览器驱动类型(chrome/firefox)。
 driver = "chrome"
 
 # 配置运行的 URL
@@ -154,4 +154,4 @@ def browser_close():
 
 
 if __name__ == "__main__":
-    _capture_screenshot("test_dir/test_baidu_search.test_search_python.png")
+    capture_screenshot("test_dir/test_baidu_search.test_search_python.png")

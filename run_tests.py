@@ -50,9 +50,9 @@ def init_env(now_time):
 
 
 @click.command()
-@click.option('-m', default=None)
+@click.option('-m', default=None, help='输入运行模式：run 或 debug.')
 def run(m):
-    if m is None:
+    if m is None or m == "run":
         print("回归模式，执行完成生成测试结果")
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
         init_env(now_time)
