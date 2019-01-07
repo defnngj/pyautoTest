@@ -12,7 +12,7 @@ from conftest import cases_path, rerun
 1、用例创建原则，测试文件名必须以“test”开头，测试函数必须以“test”开头。
 2、运行方式：
   > python3 run_tests.py  (回归模式，生成HTML报告)
-  > python3 run_tests.py --method debug  (调试模式)
+  > python3 run_tests.py -m debug  (调试模式)
 '''
 
 
@@ -50,9 +50,9 @@ def init_env(now_time):
 
 
 @click.command()
-@click.option('--method', default=None)
-def run(method):
-    if method is None:
+@click.option('-m', default=None, help='输入运行模式：run 或 debug.')
+def run(m):
+    if m is None or m == "run":
         print("回归模式，执行完成生成测试结果")
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
         init_env(now_time)
@@ -61,7 +61,7 @@ def run(method):
                      "--junit-xml=" + REPORT_DIR + now_time + "/junit-xml.xml",
                      "--self-contained-html",
                      "--reruns", rerun])
-    elif method == "debug":
+    elif m == "debug":
         print("debug模式运行测试用例：")
         pytest.main(["-v", "-s", cases_path])
         print("运行结束！！")

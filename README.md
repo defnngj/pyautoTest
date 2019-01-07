@@ -35,6 +35,6 @@ cases_path = "./test_dir/"
 
 ```shell
 $ python run_tests.py  (回归模式，生成HTML报告)
-$ python run_tests.py --method debug  (调试模式)
+$ python run_tests.py -m debug  (调试模式)
 ```
 注： 不支持在编辑器中运行，请在 cmd（windows）/终端(Linux)下执行。
