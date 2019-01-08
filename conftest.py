@@ -11,7 +11,6 @@ from selenium.webdriver.firefox.options import Options as FF_Options
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
-IMAGE_DIR = REPORT_DIR + "image/"
 
 
 ############################
@@ -92,10 +91,23 @@ def capture_screenshot(case_name):
     """
     global driver
     file_name = case_name.split("/")[-1]
-    image_folder = os.path.exists(IMAGE_DIR)
-    if image_folder is not True:
-        os.mkdir(IMAGE_DIR)
-    driver.save_screenshot(IMAGE_DIR + file_name)
+    new_report_dir = new_report_time()
+    if new_report_dir is None:
+        raise RuntimeError('没有初始化测试目录')
+    image_dir = os.path.join(REPORT_DIR, new_report_dir, "image", file_name)
+    driver.save_screenshot(image_dir)
+
+
+def new_report_time():
+    """
+    获取最新报告的目录名（即运行时间，例如：2018_11_21_17_40_44）
+    """
+    files = os.listdir(REPORT_DIR)
+    files.sort()
+    try:
+        return files[-1]
+    except IndexError:
+        return None
 
 
 # 启动浏览器
