@@ -1,7 +1,7 @@
-from page_objects import PageObject, PageElement, PageElements
+from poium import Page, PageElement, PageElements
 
 
-class BaiduPage(PageObject):
+class BaiduPage(Page):
     search_input = PageElement(id_="kw", describe="搜索框")
     search_button = PageElement(id_="su", describe="搜索按钮")
     settings = PageElement(link_text="设置", describe="设置下拉框")

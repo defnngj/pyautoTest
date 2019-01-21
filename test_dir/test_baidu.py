@@ -16,7 +16,7 @@ class TestSearch:
         page.search_input.send_keys("pytest")
         page.search_button.click()
         sleep(2)
-        assert browser.title == "pytest_百度搜索222"
+        assert browser.title == "pytest_百度搜索"
 
     @pytest.mark.parametrize(
         "name, search_key",

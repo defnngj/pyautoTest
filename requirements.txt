@@ -3,4 +3,4 @@ pytest==4.0.1
 pytest-html==1.16.1
 pytest-rerunfailures==5.0
 click==6.7
-poium==0.2.2
+poium==0.3.0
