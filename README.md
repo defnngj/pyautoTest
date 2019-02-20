@@ -19,7 +19,7 @@ $ pip install -r requirements.txt
 
 ```python
 # 配置浏览器驱动类型。
-driver = "chrome"
+driver_type = "chrome"
 
 # 配置运行的 URL
 url = "https://www.baidu.com"
