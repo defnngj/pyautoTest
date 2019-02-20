@@ -16,7 +16,7 @@ REPORT_DIR = BASE_DIR + "/test_report/"
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox)。
-driver = "chrome"
+driver_type = "chrome"
 
 # 配置运行的 URL
 url = "https://www.baidu.com"
@@ -118,18 +118,19 @@ def browser():
     :return:
     """
     global driver
+    global driver_type
 
-    if driver == "chrome":
+    if driver_type == "chrome":
         # 本地chrome浏览器
         driver = webdriver.Chrome()
         driver.set_window_size(1920, 1080)
 
-    elif driver == "firefox":
+    elif driver_type == "firefox":
         # 本地firefox浏览器
         driver = webdriver.Firefox()
         driver.set_window_size(1920, 1080)
 
-    elif driver == "chrome-headless":
+    elif driver_type == "chrome-headless":
         # chrome headless模式
         chrome_options = CH_Options()
         chrome_options.add_argument("--headless")
@@ -137,13 +138,13 @@ def browser():
         chrome_options.add_argument("--window-size=1920x1080")
         driver = webdriver.Chrome(chrome_options=chrome_options)
 
-    elif driver == "firefox-headless":
+    elif driver_type == "firefox-headless":
         # firefox headless模式
         firefox_options = FF_Options()
         firefox_options.headless = True
         driver = webdriver.Firefox(firefox_options=firefox_options)
 
-    elif driver == "grid":
+    elif driver_type == "grid":
         # 通过远程节点运行
         driver = Remote(command_executor='http://10.2.16.182:4444/wd/hub',
                         desired_capabilities={
