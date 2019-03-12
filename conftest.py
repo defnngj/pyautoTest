@@ -37,19 +37,17 @@ def base_url():
     return url
 
 
-# 描述和运行时间表头
+# 设置用例描述表头
 @pytest.mark.optionalhook
 def pytest_html_results_table_header(cells):
     cells.insert(2, html.th('Description'))
-    cells.insert(1, html.th('Time', class_='sortable time', col='time'))
     cells.pop()
 
 
-# 描述和运行时间表格
+# 设置用例描述表格
 @pytest.mark.optionalhook
 def pytest_html_results_table_row(report, cells):
     cells.insert(2, html.td(report.description))
-    cells.insert(1, html.td(datetime.utcnow(), class_='col-time'))
     cells.pop()
 
 
