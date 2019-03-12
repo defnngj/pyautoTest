@@ -79,8 +79,6 @@ def pytest_runtest_makereport(item):
         report.extra = extra
 
 
-# 配置用例失败截图路径
-# 设置截图保存位置
 def capture_screenshot(case_name):
     """
     配置用例失败截图路径
