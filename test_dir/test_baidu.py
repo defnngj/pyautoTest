@@ -48,7 +48,7 @@ class TestSearchSettings:
         sleep(2)
         page.save_setting.click()
         alert_text = page.get_alert_text
-        browser.switch_to.alert.accept()
+        page.accept_alert()
         assert alert_text == "已经记录下您的使用偏好"
 
 
