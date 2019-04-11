@@ -1,6 +1,4 @@
 import os
-from os.path import abspath, dirname
-from datetime import datetime
 import pytest
 from py.xml import html
 from selenium import webdriver
@@ -132,7 +130,7 @@ def browser():
         chrome_options.add_argument("--headless")
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument("--window-size=1920x1080")
-        driver = webdriver.Chrome(chrome_options=chrome_options)
+        driver = webdriver.Chrome(options=chrome_options)
 
     elif driver_type == "firefox-headless":
         # firefox headless模式
