@@ -1,12 +1,10 @@
 import os
 import pytest
 from py.xml import html
-from py.xml import html as aa_html
 from selenium import webdriver
 from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options as CH_Options
 from selenium.webdriver.firefox.options import Options as FF_Options
-import html as new_html
 
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -15,8 +13,8 @@ REPORT_DIR = BASE_DIR + "/test_report/"
 
 ############################
 
-# 配置浏览器驱动类型(chrome/firefox)。
-driver_type = "chrome-headless"
+# 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
+driver_type = "chrome"
 
 # 配置运行的 URL
 url = "https://www.baidu.com"
