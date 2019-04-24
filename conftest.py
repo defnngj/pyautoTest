@@ -1,10 +1,12 @@
 import os
 import pytest
 from py.xml import html
+from py.xml import html as aa_html
 from selenium import webdriver
 from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options as CH_Options
 from selenium.webdriver.firefox.options import Options as FF_Options
+import html as new_html
 
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -14,7 +16,7 @@ REPORT_DIR = BASE_DIR + "/test_report/"
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox)。
-driver_type = "chrome"
+driver_type = "chrome-headless"
 
 # 配置运行的 URL
 url = "https://www.baidu.com"
@@ -58,7 +60,7 @@ def pytest_runtest_makereport(item):
     pytest_html = item.config.pluginmanager.getplugin('html')
     outcome = yield
     report = outcome.get_result()
-    report.description = str(item.function.__doc__)
+    report.description = description_html(item.function.__doc__)
     extra = getattr(report, 'extra', [])
     if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')
@@ -75,6 +77,23 @@ def pytest_runtest_makereport(item):
                        'onclick="window.open(this.src)" align="right"/></div>' % img_path
                 extra.append(pytest_html.extras.html(html))
         report.extra = extra
+
+
+def description_html(desc):
+    """
+    将用例中的描述转成HTML对象
+    :param desc: 描述
+    :return:
+    """
+    if desc is None:
+        return ""
+    desc_lines = desc.split(";")
+    desc_html = html.html(
+        html.head(
+            html.meta(name="Content-Type", value="text/html; charset=latin1")),
+        html.body(
+            [html.p(line) for line in desc_lines]))
+    return desc_html
 
 
 def capture_screenshot(case_name):
