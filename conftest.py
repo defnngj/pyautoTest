@@ -84,8 +84,17 @@ def description_html(desc):
     :return:
     """
     if desc is None:
-        return ""
-    desc_lines = desc.split(";")
+        return "No case description"
+    desc_ = ""
+    for i in range(len(desc)):
+        if i == 0:
+            pass
+        elif desc[i] == '\n':
+            desc_ = desc_ + ";"
+        else:
+            desc_ = desc_ + desc[i]
+    
+    desc_lines = desc_.split(";")
     desc_html = html.html(
         html.head(
             html.meta(name="Content-Type", value="text/html; charset=latin1")),
