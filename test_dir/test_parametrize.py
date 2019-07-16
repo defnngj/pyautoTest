@@ -3,7 +3,8 @@ import json
 from time import sleep
 import pytest
 from os.path import dirname, abspath
-sys.path.insert(0, dirname(dirname(abspath(__file__))))
+base_path = dirname(dirname(abspath(__file__)))
+sys.path.insert(0, base_path)
 from page.baidu_page import BaiduPage
 
 
@@ -18,7 +19,7 @@ def get_data(file_path):
 
 @pytest.mark.parametrize(
     "name, search_key",
-    get_data("./data/data_file.json")
+    get_data(base_path + "/test_dir/data/data_file.json")
     )
 def test_baidu_search(name, search_key, browser, base_url):
     page = BaiduPage(browser)

@@ -12,6 +12,7 @@
 ```shell
 $ pip install -r requirements.txt
 ```
+注：安装```requirements.txt```指定依赖库的版本，这是经过测试的，有时候新的版本可会有错。
 
 #### 配置：
 
