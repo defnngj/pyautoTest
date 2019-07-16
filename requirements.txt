@@ -1,6 +1,6 @@
 selenium==3.141.0
-pytest==4.3.0
-pytest-html==1.20.0
-pytest-rerunfailures==6.0
+pytest==5.0.1
+pytest-html==1.21.1
+pytest-rerunfailures==7.0
 click==6.7
 poium==0.3.6
