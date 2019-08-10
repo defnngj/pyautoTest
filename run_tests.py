@@ -1,11 +1,14 @@
 # coding=utf-8
 import os
 import time
-import shutil
+import logging
 import pytest
 import click
 from conftest import REPORT_DIR
 from conftest import cases_path, rerun
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 '''
 说明：
@@ -28,7 +31,7 @@ def init_env(now_time):
 @click.option('-m', default=None, help='输入运行模式：run 或 debug.')
 def run(m):
     if m is None or m == "run":
-        print("回归模式，执行完成生成测试结果")
+        logger.info("回归模式，开始执行✈✈！")
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
         init_env(now_time)
         html_report = os.path.join(REPORT_DIR, now_time, "report.html")
@@ -38,8 +41,9 @@ def run(m):
                      "--junit-xml=" + xml_report,
                      "--self-contained-html",
                      "--reruns", rerun])
+        logger.info("运行结束，生成测试报告♥❤！")
     elif m == "debug":
-        print("debug模式运行测试用例：")
+        print("debug模式，开始执行！")
         pytest.main(["-v", "-s", cases_path])
         print("运行结束！！")
 
