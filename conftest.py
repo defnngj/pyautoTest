@@ -22,6 +22,9 @@ url = "https://www.baidu.com"
 # 失败重跑次数
 rerun = "3"
 
+# 当达到最大失败数，停止执行
+max_fail = "5"
+
 # 运行测试用例的目录或文件
 cases_path = "./test_dir/"
 
