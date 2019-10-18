@@ -1,7 +1,13 @@
+"""
+@author:  虫师
+@data: 2019-10-17
+@function python 基本用法
+"""
 import sys
 from time import sleep
 import pytest
 from os.path import dirname, abspath
+
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page.baidu_page import BaiduPage
 
@@ -25,22 +31,6 @@ class TestSearch:
         page.search_button.click()
         sleep(2)
         assert browser.title == "pytest_百度搜索"
-
-    @pytest.mark.parametrize(
-        "name, search_key",
-        [("1", "Selenium"),
-         ("2", "pytest文档"),
-         ("3", "pytest-html"),
-         ],
-         ids=["case1", "case2", "case3"]
-        )
-    def test_baidu_search(self, name, search_key, browser, base_url):
-        page = BaiduPage(browser)
-        page.get(base_url)
-        page.search_input = search_key
-        page.search_button.click()
-        sleep(2)
-        assert browser.title == search_key+"_百度搜索"
 
 
 class TestSearchSettings:
