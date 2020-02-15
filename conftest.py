@@ -9,7 +9,7 @@ from selenium.webdriver.firefox.options import Options as FF_Options
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
-
+driver = None
 
 ############################
 
@@ -71,7 +71,7 @@ def pytest_runtest_makereport(item):
                 case_name = case_path.split("-")[0] + "].png"
             else:
                 case_name = case_path
-            capture_screenshot(case_name)
+            capture_screenshots(case_name)
             img_path = "image/" + case_name.split("/")[-1]
             if img_path:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
@@ -106,7 +106,7 @@ def description_html(desc):
     return desc_html
 
 
-def capture_screenshot(case_name):
+def capture_screenshots(case_name):
     """
     配置用例失败截图路径
     :param case_name: 用例名
