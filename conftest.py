@@ -39,14 +39,12 @@ def base_url():
 
 
 # 设置用例描述表头
-@pytest.mark.optionalhook
 def pytest_html_results_table_header(cells):
     cells.insert(2, html.th('Description'))
     cells.pop()
 
 
 # 设置用例描述表格
-@pytest.mark.optionalhook
 def pytest_html_results_table_row(report, cells):
     cells.insert(2, html.td(report.description))
     cells.pop()
@@ -190,4 +188,4 @@ def browser_close():
 
 
 if __name__ == "__main__":
-    capture_screenshot("test_dir/test_baidu_search.test_search_python.png")
+    capture_screenshots("test_dir/test_baidu_search.test_search_python.png")
