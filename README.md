@@ -16,23 +16,27 @@ $ pip install -r requirements.txt
 
 #### 配置：
 
-在 __conftest.py__ 文件配置
+在 `config.py` 文件配置
 
 ```python
-# 配置浏览器驱动类型。
-driver_type = "chrome"
-
-# 配置运行的 URL
-url = "https://www.baidu.com"
-
-# 失败重跑次数
-rerun = "3"
-
-# 当达到最大失败数，停止执行
-max_fail = "5"
-
-# 运行测试用例的目录或文件
-cases_path = "./test_dir/"
+class RunConfig:
+    """
+    运行测试配置
+    """
+    # 配置浏览器驱动类型。
+    driver_type = "chrome"
+    
+    # 配置运行的 URL
+    url = "https://www.baidu.com"
+    
+    # 失败重跑次数
+    rerun = "3"
+    
+    # 当达到最大失败数，停止执行
+    max_fail = "5"
+    
+    # 运行测试用例的目录或文件
+    cases_path = "./test_dir/"
 ```
 
 #### 运行：

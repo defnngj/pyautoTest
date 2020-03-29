@@ -5,7 +5,7 @@ import logging
 import pytest
 import click
 from conftest import REPORT_DIR
-from conftest import cases_path, rerun, max_fail
+from config import RunConfig
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -36,16 +36,16 @@ def run(m):
         init_env(now_time)
         html_report = os.path.join(REPORT_DIR, now_time, "report.html")
         xml_report = os.path.join(REPORT_DIR, now_time, "junit-xml.xml")
-        pytest.main(["-s", "-v", cases_path,
+        pytest.main(["-s", "-v", RunConfig.cases_path,
                      "--html=" + html_report,
                      "--junit-xml=" + xml_report,
                      "--self-contained-html",
-                     "--maxfail", max_fail,
-                     "--reruns", rerun])
+                     "--maxfail", RunConfig.max_fail,
+                     "--reruns", RunConfig.rerun])
         logger.info("运行结束，生成测试报告♥❤！")
     elif m == "debug":
         print("debug模式，开始执行！")
-        pytest.main(["-v", "-s", cases_path])
+        pytest.main(["-v", "-s", RunConfig.cases_path])
         print("运行结束！！")
 
 
