@@ -107,7 +107,7 @@ def new_report_time():
     files = os.listdir(REPORT_DIR)
     files.sort()
     try:
-        return files[-1]
+        return files[-2]
     except IndexError:
         return None
 
