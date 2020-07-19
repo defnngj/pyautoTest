@@ -10,7 +10,6 @@ from config import RunConfig
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
-driver = None
 
 
 # 定义基本测试环境
@@ -93,23 +92,11 @@ def capture_screenshots(case_name):
     """
     global driver
     file_name = case_name.split("/")[-1]
-    new_report_dir = new_report_time()
-    if new_report_dir is None:
-        raise RuntimeError('没有初始化测试目录')
-    image_dir = os.path.join(REPORT_DIR, new_report_dir, "image", file_name)
-    driver.save_screenshot(image_dir)
-
-
-def new_report_time():
-    """
-    获取最新报告的目录名（即运行时间，例如：2018_11_21_17_40_44）
-    """
-    files = os.listdir(REPORT_DIR)
-    files.sort()
-    try:
-        return files[-2]
-    except IndexError:
-        return None
+    if RunConfig.NEW_REPORT is None:
+        raise NameError('没有初始化测试报告目录')
+    else:
+        image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
+        RunConfig.driver.save_screenshot(image_dir)
 
 
 # 启动浏览器
@@ -136,7 +123,7 @@ def browser():
         chrome_options = CH_Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument('--disable-gpu')
-        chrome_options.add_argument("--window-size=1920x1080")
+        # chrome_options.add_argument("--window-size=1920x1080")
         driver = webdriver.Chrome(options=chrome_options)
 
     elif RunConfig.driver_type == "firefox-headless":
@@ -155,6 +142,8 @@ def browser():
 
     else:
         raise NameError("driver驱动类型定义错误！")
+
+    RunConfig.driver = driver
 
     return driver
 
