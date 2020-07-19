@@ -5,7 +5,7 @@ class RunConfig:
     运行测试配置
     """
     # 运行测试用例的目录或文件
-    cases_path = "./test_dir/test_bd_search.py"
+    cases_path = "./test_dir/"
 
     # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
     driver_type = "chrome"
