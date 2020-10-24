@@ -21,4 +21,8 @@ class RunConfig:
     # 当达到最大失败数，停止执行
     max_fail = "5"
 
+    # 浏览器驱动（不需要修改）
+    driver = None
 
+    # 报告路径（不需要修改）
+    NEW_REPORT = None
