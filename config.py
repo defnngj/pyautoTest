@@ -1,3 +1,5 @@
+import os
+PRO_PATH = os.path.dirname(os.path.abspath(__file__))
 
 
 class RunConfig:
@@ -5,7 +7,7 @@ class RunConfig:
     运行测试配置
     """
     # 运行测试用例的目录或文件
-    cases_path = "./test_dir/"
+    cases_path = os.path.join(PRO_PATH, "test_dir", "test_baidu.py")
 
     # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
     driver_type = "chrome"
