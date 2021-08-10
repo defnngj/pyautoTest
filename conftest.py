@@ -12,12 +12,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
 
 
-# 定义基本测试环境
-@pytest.fixture(scope='function')
-def base_url():
-    return RunConfig.url
-
-
 # 设置用例描述表头
 def pytest_html_results_table_header(cells):
     cells.insert(2, html.th('Description'))

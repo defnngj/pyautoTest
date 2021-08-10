@@ -12,9 +12,6 @@ class RunConfig:
     # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
     driver_type = "chrome"
 
-    # 配置运行的 URL
-    url = "https://www.baidu.com"
-
     # 失败重跑次数
     rerun = "1"
 
