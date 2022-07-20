@@ -22,7 +22,8 @@ from page.baidu_page import BaiduPage
      ],
     ids=["case1", "case2", "case3"]
 )
-def test_baidu_search(self, name, search_key, browser, base_url):
+def test_baidu_search(name, search_key, browser, base_url):
+    """百度搜索参数化"""
     page = BaiduPage(browser)
     page.get(base_url)
     page.search_input = search_key
