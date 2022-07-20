@@ -27,7 +27,6 @@ def init_env(new_report):
     os.mkdir(new_report + "/image")
     
 
-
 @click.command()
 @click.option('-m', default=None, help='输入运行模式：run 或 debug.')
 def run(m):

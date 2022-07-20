@@ -4,3 +4,4 @@ pytest-rerunfailures==9.1.1
 pytest-base-url==1.4.2
 click==7.1.2
 poium==1.1.5
+webdriver-manager==3.8.2

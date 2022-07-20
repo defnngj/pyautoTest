@@ -5,6 +5,10 @@ from selenium import webdriver
 from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options as CH_Options
 from selenium.webdriver.firefox.options import Options as FF_Options
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 from config import RunConfig
 
 # 项目目录配置
@@ -90,7 +94,7 @@ def capture_screenshots(case_name):
         raise NameError('没有初始化测试报告目录')
     else:
         image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
-        RunConfig.driver.save_screenshot(image_dir)
+        # RunConfig.driver.save_screenshot(image_dir)
 
 
 # 启动浏览器
@@ -104,7 +108,7 @@ def browser():
 
     if RunConfig.driver_type == "chrome":
         # 本地chrome浏览器
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.maximize_window()
 
     elif RunConfig.driver_type == "firefox":
@@ -118,13 +122,17 @@ def browser():
         chrome_options.add_argument("--headless")
         chrome_options.add_argument('--disable-gpu')
         # chrome_options.add_argument("--window-size=1920x1080")
-        driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Chrome(
+            options=chrome_options,
+            service=ChromeService(ChromeDriverManager().install()))
 
     elif RunConfig.driver_type == "firefox-headless":
         # firefox headless模式
         firefox_options = FF_Options()
         firefox_options.headless = True
-        driver = webdriver.Firefox(firefox_options=firefox_options)
+        driver = webdriver.Firefox(
+            firefox_options=firefox_options,
+            service=FirefoxService(GeckoDriverManager().install()))
 
     elif RunConfig.driver_type == "grid":
         # 通过远程节点运行
