@@ -94,7 +94,7 @@ def capture_screenshots(case_name):
         raise NameError('没有初始化测试报告目录')
     else:
         image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
-        # RunConfig.driver.save_screenshot(image_dir)
+        RunConfig.driver.save_screenshot(image_dir)
 
 
 # 启动浏览器
