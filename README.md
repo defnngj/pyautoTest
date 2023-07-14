@@ -13,7 +13,7 @@
 $ pip install -r requirements.txt
 ```
 
-注：安装```requirements.txt```指定依赖库的版本，这是经过测试的，有时候新的版本可会有错。
+注：安装指定依赖库的版本，这是经过测试的，有时候新的版本可会有错。
 
 ### 配置
 
@@ -39,24 +39,25 @@ class RunConfig:
 
 ### 运行
 
-**不支持在编辑器（pycharm/ VS code ...）中运行，请在 cmd（windows）/终端(Linux)下执行。**
+**可以在编辑器（pycharm/ VS code ...）中运行，推荐在 cmd（windows）/终端(Linux)下执行。**
 
 ```shell
 $ python run_tests.py  (回归模式，生成HTML报告)
 $ python run_tests.py -m debug  (调试模式)
+$ 待补充调试模式的作用和区别
 ```
 
 ### 警告提示
 
-`conftest.py` 文件有一行在 pycharm 中提示错误：
+`conftest.py` 文件有一行在 vscode 中提示错误：
 
 ```python
 from py.xml import html
 ```
 
-* 原因
+## 原因 ##
 
-从源代码判断，py名称空间中的属性是动态创建的，这就是为什么静态分析工具pylint (pycharm)无法识别它们的原因:
+从源代码判断，py名称空间中的属性是动态创建的，这就是为什么静态分析工具pylint (vscode)无法识别它们的原因:
 
 ```py
 apipkg.initpkg(__name__, attr={'_apipkg': apipkg}, exportdefs={
@@ -73,7 +74,7 @@ apipkg.initpkg(__name__, attr={'_apipkg': apipkg}, exportdefs={
 })
 ```
 
-所以，是pycharm 不够智能！你可以忽略这个错误。
+所以，是vscode 不够智能！你可以忽略这个错误。
 
 但是，时迁尝试在vscode解决了这个问题：pip3 install py
 
