@@ -74,3 +74,7 @@ apipkg.initpkg(__name__, attr={'_apipkg': apipkg}, exportdefs={
 ```
 
 所以，是pycharm 不够智能！你可以忽略这个错误。
+
+但是，时迁尝试在vscode解决了这个问题：pip3 install py
+
+或许只是py库老版本没有兼容呢？
