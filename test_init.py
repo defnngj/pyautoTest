@@ -7,10 +7,18 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options as CH_options
 from time import sleep
 
 #参数实例化浏览器驱动
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+#options参数设置
+chrome_options = CH_options()
+chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])#去除 “Chrome正受到自动化测试软件的控制”
+#chrome_options.add_argument("--headless")
+#chrome_options.add_argument('--disable-gpu')
+# chrome_options.add_argument("--window-size=1920x1080")
+driver = webdriver.Chrome(options=chrome_options,service=ChromeService(ChromeDriverManager().install()))
+#driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 driver.implicitly_wait(30)
 
 #打开网页
@@ -36,21 +44,27 @@ driver.find_element(By.CSS_SELECTOR,"#password").send_keys("meituan123",Keys.ENT
 模拟鼠标操作：使用ActionChains类来模拟鼠标的拖动操作，将滑块拖动到指定位置。
 """
 #定位滑块和背景图片的元素
+sleep(4)
 slider = driver.find_element(By.CSS_SELECTOR,"#yodaBox")
 background = driver.find_element(By.CSS_SELECTOR,"#yodaBoxWrapper > label")
-
+print(background.size)
 #计算滑块和背景的相对距离
-distance = background.location["x"] - slider.location["x"]
+distance = slider.size["width"] + background.size["width"]
+print(distance)
 #模拟鼠标操作（按住元素，滑动到指定位置，释放鼠标）
-i = 120
 act = ActionChains(driver)
-while True:
-    i += 20
-    for j in range(10,20,5):
-        act.click_and_hold(slider).move_by_offset(j,0).perform()
-        sleep(0.5)
-    act.release().perform()
-    if slider.is_displayed() == False:
-        print("识别成功")
-        break
+act.click_and_hold(slider).perform()
+#先滑动[distance - 5] 个像素
+act.move_by_offset(distance,0).perform()
+#使用循环，每100毫秒滑动5像素
+for j in range(0,10):
+    act.move_by_offset(1,0).perform()
+    print(j)
+    sleep(0.1)
+# 释放鼠标，完成滑动操作
+act.release().perform()
+if slider.is_displayed() == False:
+    print("识别成功")
+elif slider.is_displayed() == True:
+    print("识别失败")
 sleep(2000)

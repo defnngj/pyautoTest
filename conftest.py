@@ -111,7 +111,7 @@ def browser():
         driver.maximize_window()
 
     elif RunConfig.driver_type == "chrome-headless":
-        # chrome headless模式
+        # chrome headless模式（无头模式），不打开浏览器界面，执行的UI自动化
         chrome_options = CH_Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument('--disable-gpu')
