@@ -4,21 +4,18 @@ from py.xml import html
 from selenium import webdriver
 from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options as CH_Options
-from selenium.webdriver.firefox.options import Options as FF_Options
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
 from config import RunConfig
 
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-REPORT_DIR = BASE_DIR + "/test_report/"
+REPORT_DIR = BASE_DIR + "/测试报告/"
 
 
 # 设置用例描述表头
 def pytest_html_results_table_header(cells):
-    cells.insert(2, html.th('Description'))
+    cells.insert(2, html.th('用例描述'))
     cells.pop()
 
 
@@ -90,11 +87,13 @@ def capture_screenshots(case_name):
     """
     global driver
     file_name = case_name.split("/")[-1]
-    if RunConfig.NEW_REPORT is None:
-        raise NameError('没有初始化测试报告目录')
-    else:
-        image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
-        RunConfig.driver.save_screenshot(image_dir)
+    #if RunConfig.NEW_REPORT is None:
+    #    raise NameError('没有初始化测试报告目录!')
+    #else:
+    #    image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
+    #    RunConfig.driver.save_screenshot(image_dir)
+    image_dir = os.path.join(RunConfig.NEW_REPORT, "image", file_name)
+    RunConfig.driver.save_screenshot(image_dir)
 
 
 # 启动浏览器
@@ -111,11 +110,6 @@ def browser():
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         driver.maximize_window()
 
-    elif RunConfig.driver_type == "firefox":
-        # 本地firefox浏览器
-        driver = webdriver.Firefox()
-        driver.maximize_window()
-
     elif RunConfig.driver_type == "chrome-headless":
         # chrome headless模式
         chrome_options = CH_Options()
@@ -125,14 +119,6 @@ def browser():
         driver = webdriver.Chrome(
             options=chrome_options,
             service=ChromeService(ChromeDriverManager().install()))
-
-    elif RunConfig.driver_type == "firefox-headless":
-        # firefox headless模式
-        firefox_options = FF_Options()
-        firefox_options.headless = True
-        driver = webdriver.Firefox(
-            firefox_options=firefox_options,
-            service=FirefoxService(GeckoDriverManager().install()))
 
     elif RunConfig.driver_type == "grid":
         # 通过远程节点运行
@@ -159,4 +145,4 @@ def browser_close():
 
 
 if __name__ == "__main__":
-    capture_screenshots("test_dir/test_baidu_search.test_search_python.png")
+    capture_screenshots("test_dir/test_baidu.py")
