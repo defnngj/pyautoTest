@@ -41,3 +41,12 @@ background = driver.find_element(By.CSS_SELECTOR,"#yodaBoxWrapper > label")
 SliderTool(driver,slider,background)
 
 sleep(2000)
+
+
+"""
+待补充：
+    1、浏览器滑块验证已支持，但存在一个接口校验，导致自动化登录 无法完成，需优化
+        优化方案：
+            1、使用曾经用过的面具版selenium绕过异常检测
+            2、定制化针对该接口识别的参数处理（初步尝试失败）
+"""
