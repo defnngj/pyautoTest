@@ -24,7 +24,7 @@ def init_env(new_report):
     初始化测试报告目录
     """
     os.mkdir(new_report)
-    os.mkdir(new_report + "/image")
+    os.mkdir(new_report + "/失败截图")
     
 
 @click.command()
@@ -35,7 +35,7 @@ def run(m):
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
         RunConfig.NEW_REPORT = os.path.join(REPORT_DIR, now_time)
         init_env(RunConfig.NEW_REPORT)
-        html_report = os.path.join(RunConfig.NEW_REPORT, "report.html")
+        html_report = os.path.join(RunConfig.NEW_REPORT, "测试报告可视化网页.html")
         xml_report = os.path.join(RunConfig.NEW_REPORT, "junit-xml.xml")
         pytest.main(["-s", "-v", RunConfig.cases_path,
                      "--html=" + html_report,
