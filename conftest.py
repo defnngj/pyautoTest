@@ -121,7 +121,7 @@ def browser():
     elif RunConfig.driver_type == "chrome-headless":
         # chrome headless模式
         chrome_options = CH_Options()
-        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--headless=new")
         chrome_options.add_argument('--disable-gpu')
         # chrome_options.add_argument("--window-size=1920x1080")
         driver = webdriver.Chrome(options=chrome_options)
@@ -130,15 +130,12 @@ def browser():
         # firefox headless模式
         firefox_options = FF_Options()
         firefox_options.headless = True
-        driver = webdriver.Firefox(firefox_options=firefox_options)
+        driver = webdriver.Firefox(options=firefox_options)
 
     elif RunConfig.driver_type == "grid":
         # 通过远程节点运行
-        driver = Remote(command_executor='http://localhost:4444/wd/hub',
-                        desired_capabilities={
-                              "browserName": "chrome",
-                        })
-        driver.set_window_size(1920, 1080)
+        chrome_options = CH_Options()
+        driver = Remote(command_executor='http://localhost:4444/wd/hub', options=chrome_options)
 
     else:
         raise NameError("driver驱动类型定义错误！")
@@ -148,10 +145,8 @@ def browser():
     yield driver
 
     driver.quit()
-    print("test end!")
 
     return driver
-
 
 
 if __name__ == "__main__":
