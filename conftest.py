@@ -123,7 +123,6 @@ def browser():
         chrome_options = CH_Options()
         chrome_options.add_argument("--headless=new")
         chrome_options.add_argument('--disable-gpu')
-        # chrome_options.add_argument("--window-size=1920x1080")
         driver = webdriver.Chrome(options=chrome_options)
 
     elif RunConfig.driver_type == "firefox-headless":
