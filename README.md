@@ -45,32 +45,3 @@ class RunConfig:
 $ python run_tests.py  (回归模式，生成HTML报告)
 $ python run_tests.py -m debug  (调试模式)
 ```
-
-### 警告提示
-
-`conftest.py` 文件有一行在 pycharm 中提示错误：
-
-```python
-from py.xml import html
-```
-
-* 原因
-
-从源代码判断，py名称空间中的属性是动态创建的，这就是为什么静态分析工具pylint (pycharm)无法识别它们的原因:
-
-```py
-apipkg.initpkg(__name__, attr={'_apipkg': apipkg}, exportdefs={
-    ...
-    # small and mean xml/html generation
-    'xml' : {
-        '__doc__'            : '._xmlgen:__doc__',
-        'html'               : '._xmlgen:html',
-        'Tag'                : '._xmlgen:Tag',
-        'raw'                : '._xmlgen:raw',
-        'Namespace'          : '._xmlgen:Namespace',
-        'escape'             : '._xmlgen:escape',
-    },
-})
-```
-
-所以，是pycharm 不够智能！你可以忽略这个错误。

@@ -1,6 +1,5 @@
 import os
 import pytest
-from py.xml import html
 from selenium import webdriver
 from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options as CH_Options
@@ -14,13 +13,13 @@ REPORT_DIR = BASE_DIR + "/test_report/"
 
 # 设置用例描述表头
 def pytest_html_results_table_header(cells):
-    cells.insert(2, html.th('Description'))
+    cells.insert(2, '<th>Description</th>')
     cells.pop()
 
 
 # 设置用例描述表格
 def pytest_html_results_table_row(report, cells):
-    cells.insert(2, html.td(report.description))
+    cells.insert(2, f'<td>{report.description}</td>')
     cells.pop()
 
 
@@ -65,17 +64,24 @@ def description_html(desc):
         if i == 0:
             pass
         elif desc[i] == '\n':
-            desc_ = desc_ + ";"
+            desc_ += ";"
         else:
-            desc_ = desc_ + desc[i]
+            desc_ += desc[i]
     
     desc_lines = desc_.split(";")
-    desc_html = html.html(
-        html.head(
-            html.meta(name="Content-Type", value="text/html; charset=latin1")),
-        html.body(
-            [html.p(line) for line in desc_lines]))
-    return desc_html
+
+    head = f"<head><meta name='Content-Type' content='text/html; charset=latin1'></head>"
+
+    # 构建 HTML 正文部分
+    body = "<body>"
+    for line in desc_lines:
+        body += f"<p>{line}</p>"
+    body += "</body>"
+
+    # 完整的 HTML 文档
+    desc_doc = f"<html>{head}{body}</html>"
+
+    return desc_doc
 
 
 def capture_screenshots(case_name):
@@ -139,15 +145,13 @@ def browser():
 
     RunConfig.driver = driver
 
-    return driver
-
-
-# 关闭浏览器
-@pytest.fixture(scope="session", autouse=True)
-def browser_close():
     yield driver
+
     driver.quit()
     print("test end!")
+
+    return driver
+
 
 
 if __name__ == "__main__":
