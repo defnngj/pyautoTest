@@ -24,7 +24,7 @@ from page.baidu_page import BaiduPage
 )
 def test_baidu_search(self, name, search_key, browser, base_url):
     page = BaiduPage(browser)
-    page.get(base_url)
+    page.open(base_url)
     page.search_input = search_key
     page.search_button.click()
     sleep(2)
@@ -51,7 +51,7 @@ def get_data(file_path):
 )
 def test_baidu_search(name, search_key, browser, base_url):
     page = BaiduPage(browser)
-    page.get(base_url)
+    page.open(base_url)
     page.search_input = search_key
     page.search_button.click()
     sleep(2)
